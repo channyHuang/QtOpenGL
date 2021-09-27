@@ -19,7 +19,11 @@ protected:
     void paintGL();
     void resizeGL(int w, int h);
 private:
+    QOpenGLBuffer *m_vbo;
+    QOpenGLVertexArrayObject *m_vao;
     QOpenGLShaderProgram *m_shader;
+
+    int m_posAttr, m_colAttr;
 };
 
 #endif
