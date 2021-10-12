@@ -9,4 +9,3 @@ SUBDIRS  += $$PWD/QtOpenGL-window/QtOpenGL-window.pro \
             $$PWD/QtOpenGL-3d/QtOpenGL-3d.pro \
             $$PWD/QtOpenGL-texture/QtOpenGL-texture.pro \
             $$PWD/QtOpenGL-light/QtOpenGL-light.pro \
-            $$PWD/hellogl2/hellogl2.pro
