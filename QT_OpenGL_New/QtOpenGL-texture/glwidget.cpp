@@ -1,7 +1,7 @@
 #include "glwidget.h"
 
 #define CONFIG2STR(R) #R
-#define CONFIG2QSTR(R) R
+#define CONFIG2QSTR(R) CONFIG2STR(R)
 
 GlWidget::GlWidget(QWidget* parent):
     QOpenGLWidget (parent),
