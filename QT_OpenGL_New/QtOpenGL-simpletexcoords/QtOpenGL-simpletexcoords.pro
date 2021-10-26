@@ -15,18 +15,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+include($$PWD/../common/common.pri)
+
 SOURCE_FILES = $$files($${PWD}/*.cpp, false)
 HEADER_FILES = $$files($${PWD}/*.h, false)
 RESOURCE_FILES = $$files($${PWD}/*.qrc, false)
 
-INCLUDEPATH += $$PWD/../QtOpenGL-ktxview/
+INCLUDEPATH += $$PWD/../common/
+
 
 SOURCES += $${SOURCE_FILES} \
-    $$PWD/../QtOpenGL-ktxview/ktxloader.cpp \
 
 
 HEADERS += $${HEADER_FILES} \
-    $$PWD/../QtOpenGL-ktxview/ktxloader.h \
 
 
 DEFINES += PRO_PATH=$${PWD}

@@ -26,8 +26,7 @@ HEADERS += $${HEADER_FILES}
 
 DEFINES += PRO_PATH=$${PWD}
 
-RESOURCES += $${RESOURCE_FILES} \
-    textures.qrc
+RESOURCES += $${RESOURCE_FILES}
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

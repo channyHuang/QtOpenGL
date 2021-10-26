@@ -15,6 +15,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+include($$PWD/../common/common.pri)
+
+INCLUDEPATH += $$PWD/../common/
+
 SOURCE_FILES = $$files($${PWD}/*.cpp, false)
 HEADER_FILES = $$files($${PWD}/*.h, false)
 
@@ -22,6 +26,7 @@ SOURCES += $${SOURCE_FILES} \
 
 
 HEADERS += $${HEADER_FILES} \
+
 
 DEFINES += PRO_PATH=$${PWD}
 

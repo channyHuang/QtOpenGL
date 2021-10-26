@@ -5,8 +5,13 @@
 
 GlWidget::GlWidget(QWidget* parent):
     QOpenGLWidget (parent),
-    m_shader(nullptr), m_vao(nullptr), arrayBuf(nullptr), indexBuf(nullptr)
+    m_shader(nullptr), m_vao(nullptr)
 {
+    timer.setInterval(1000);
+    connect(&timer, &QTimer::timeout, [&]{
+        currentTime += 1.f;
+    });
+    timer.start();
 }
 
 GlWidget::~GlWidget(){
@@ -14,8 +19,6 @@ GlWidget::~GlWidget(){
 }
 
 void GlWidget::initShader() {
-    QString sProPath = CONFIG2QSTR(CONFIG2STR(PRO_PATH));
-
     m_vao->bind();
     m_shader = new QOpenGLShaderProgram();
     m_shader->addShaderFromSourceFile(QOpenGLShader::Vertex, ":/vshader.glsl");
@@ -41,7 +44,7 @@ void GlWidget::initObjects() {
     }
     QString sProPath = CONFIG2QSTR(PRO_PATH);
 
-    tex_object[1] = cKtxLoader.load(QString(sProPath + "/pattern1.ktx").toStdString().c_str(), 0, f);
+    tex_object[1] = cKtxLoader.load(QString(sProPath + "/brick.ktx").toStdString().c_str(), 0, f);
 
     f->glViewport(0, 0, this->width(), this->height());
     m_vao->bind();
@@ -79,7 +82,7 @@ void GlWidget::initializeGL()
 
     m_vao = new QOpenGLVertexArrayObject();
     m_vao->create();
-
+    m_vao->bind();
     //init gl environment
     f = this->context()->versionFunctions<QOpenGLFunctions_4_2_Core>();
     f->initializeOpenGLFunctions();
@@ -98,12 +101,17 @@ void GlWidget::initializeGL()
     initObjects();
 
     f->glEnable(GL_DEPTH_TEST);
-    f->glEnable(GL_CULL_FACE);
+    //f->glEnable(GL_CULL_FACE);
     f->glDepthFunc(GL_LEQUAL);
+
+    m_vao->release();
 }
 
 void GlWidget::paintGL()
 {
+    m_vao->bind();
+    m_shader->bind();
+
     static const GLfloat gray[] = { 0.2f, 0.2f, 0.2f, 1.0f };
     static const GLfloat ones[] = { 1.0f };
 
@@ -111,15 +119,21 @@ void GlWidget::paintGL()
     f->glClearBufferfv(GL_DEPTH, 0, ones);
 
     f->glViewport(0, 0, this->width(), this->height());
-    f->glBindTexture(GL_TEXTURE_2D, tex_object[tex_index]);
+    f->glBindTexture(GL_TEXTURE_2D, tex_object[tex_index + 1]);
 
     QMatrix4x4 matrix;
-    matrix.translate(0.0, 0.0, -5.0);
+    matrix.translate(0.0, 0.0, -3.0);
+    matrix.rotate((float)currentTime * 19.3f, 0.0f, 1.0f, 0.0f);
+    matrix.rotate((float)currentTime * 21.1f, 0.0f, 0.0f, 1.0f);
 
-    m_shader->setUniformValue("mv_matrix", projection * matrix);
+    m_shader->setUniformValue("mv_matrix", matrix);
     m_shader->setUniformValue("proj_matrix", projection);
-
     objLoader.render(1, 0, f);
+
+    m_shader->release();
+    m_vao->release();
+
+    update();
 }
 
 void GlWidget::resizeGL(int w, int h)

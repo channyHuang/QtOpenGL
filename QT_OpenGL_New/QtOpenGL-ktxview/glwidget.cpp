@@ -58,6 +58,8 @@ void GlWidget::initializeGL()
     m_vbo->create();
     m_vbo->bind();
 
+    m_shader->bind();
+
     QOpenGLFunctions_4_2_Core *f = this->context()->versionFunctions<QOpenGLFunctions_4_2_Core>();
     if (f == nullptr) {
         qDebug() << "not support opengl 4.2";
@@ -70,6 +72,7 @@ void GlWidget::initializeGL()
     loader.load((sProPath.toStdString() + "/pattern1.ktx"), texture, f);
     f->glBindTexture(GL_TEXTURE_2D, texture);
 
+    m_shader->release();
     m_vbo->release();
     m_vao->release();
 }

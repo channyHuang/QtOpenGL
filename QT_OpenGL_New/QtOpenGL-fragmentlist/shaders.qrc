@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>append_vshader.glsl</file>
+        <file>append_fshader.glsl</file>
+        <file>clear_fshader.glsl</file>
+        <file>clear_vshader.glsl</file>
+        <file>resolve_fshader.glsl</file>
+        <file>resolve_vshader.glsl</file>
+    </qresource>
+</RCC>

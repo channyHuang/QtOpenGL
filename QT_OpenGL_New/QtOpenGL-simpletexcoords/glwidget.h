@@ -30,7 +30,6 @@ private:
 private:
     QOpenGLShaderProgram *m_shader;
     QOpenGLVertexArrayObject *m_vao;
-    QOpenGLBuffer *arrayBuf, *indexBuf;
 
     QMatrix4x4 projection;
     QQuaternion rotation;
@@ -49,6 +48,8 @@ private:
     ktxLoader cKtxLoader;
     ObjectLoader objLoader;
     QOpenGLFunctions_4_2_Core *f = nullptr;
+
+    float currentTime = 0;
 };
 
 #endif
