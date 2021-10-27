@@ -110,90 +110,96 @@ subroutines
 
 ---
 
-## Chapter 7
-
----
-**Listing 7.6: Pseudocode for glDrawElementsInstanced()**
+## Chapter 7. Vertex Processing and Drawing Commands
+### Combining Geometry Using Primitive Restart
 grass  
-**Listing 7.9: Getting ready for instanced rendering**
+### Getting Your Data Automatically
 instancedattribs  
-**Listing 7.11: Setting up the indirect draw buffer for asteroids**
+### Indirect Draws
 multidrawindirect  
-**Listing 7.17: Spring mass system vertex shader**
+### Storing Transformed Vertices
 sprintmass  
-**Listing 7.20: Clipping an object against a plane and a sphere**
+### User-Defined Clipping
 clipdistance  
 
----
-
-## Chapter 8
-**Listing 8.1: Simple quad tessellation control shader example**
+## Chapter 8. Primitive Processing
+### Tessellation Primitive Modes
 tessellatedcube
-**Listing 8.7: Isoline spirals tessellation evaluation shader**
+### Tessellation Using Isolines
 tesssubdivmodes
-**Listing 8.8: Vertex shader for terrain rendering**
+### Tessellation Example: Terrain Rendering
 dispmap
-**Listing 8.15: Cubic Bézier patch fragment shader**
+### Tessellation Example: Cubic Bézier Patches
 cubicbezier
-**Listing 8.20: Configuring the custom culling geometry shader**
+### Discarding Geometry in the Geometry Shader
 gsculling
-**Listing 8.24: Pushing a face out along its normal**
+### Modifying Geometry in the Geometry Shader
 objectexpolder
-**Listing 8.26: Setting up the “tessellator” geometry shader**
+### Generating Geometry in the Geometry Shader
 gstessellate
-**Listing 8.33: Drawing a face normal in the geometry shader**
+### Changing the Primitive Type in the Geometry Shader
 normalviewer
-**Listing 8.35: Fragment shader for rendering quads**
+### Rendering Quads Using a Geometry Shader
 gsquads
-**Listing 8.36: Rendering to multiple viewports in a geometry shader**
+### Multiple Viewport Transformations
 multiviewport
-# Chapter 9
-**Listing 9.1: Setting up scissor rectangle arrays**
+
+## Chapter 9. Fragment Processing and the Framebuffer
+### Scissor Testing
 multiscissor
-**Listing 9.3: Rendering with all blending functions**
+### Blending
 blendmatrix
-**Listing 9.5: Rendering to a texture**
+### Off-Screen Rendering
 basicfbo
-**Listing 9.10: Displaying an array texture—vertex shader**
+### Layered Rendering
 gslayered
-**Listing 9.15: Drawing into a stereo window**
+### Rendering in Stereo
+3D立体渲染
 stereo
-**Listing 9.18: Turning on line smoothing**
+### Antialiasing by Filtering
+抗锯齿
 linesmooth
-**Listing 9.22: Fragment shader producing high-frequency output**
+### Sample Rate Shading
 sampleshading
-**Listing 9.24: Applying a simple exposure coefficient to an HDR image**
+### Tone Mapping
 hdrexposure
-**Listing 9.26: Bloom fragment shader—output bright data to a separate buffer**
+### Making Your Scene Bloom
 hdrbloom
-**Listing 9.32: Fragment shader for the star field effect**
+### Rendering a Star Field
 starfield
-**Listing 9.33: Fragment shader for generating shaped points**
+### Shaped Points
 shapedpoints
-**?**
+### 
 depthclamp
 hdrtonemap
 msaanative
 polygonsmooth
-# Chapter 10
-**Listing 10.5: Simple prefix sum implementation in C++**
-prefixsum
-**Listing 10.7: Compute shader to generate a 2D prefix sum**
-prefixsum2d
-**Listing 10.8: Depth of field using summed area tables**
+
+## Chapter 10. Compute Shaders
+GPU并行处理计算，类似于CUDA
+### Compute Shader Parallel Prefix Sum
+prefixsum  
+prefixsum2d  
 dof
-**Listing 10.14: Main body of the flocking update compute shader**
+### Compute Shader Flocking
+Flocking算法(蜂拥算法)  
 csflocking
-# Chapter 11
-**Listing 11.2: Declaring samplers inside uniform blocks**
+
+## Chapter 11
+### Eliminating Binding
+纹理一次性绑定
 bindlesstex
-**Listing 11.4: Creating a sparse texture**
+### Sparsely Populated Textures
+存储部分纹理
 sparsetexture
-**Listing 11.13: Main function for RGTC compression**
+### The RGTC Compression Scheme
+纹理压缩
 compressrgtc
-**Listing 11.14: High-quality texture filtering function**
+### High-Quality Texture Filtering
 hqfilter
-# Chapter 12
+
+## Chapter 12
+OpenGL Query
 
 ## Chapter 13
 三种光照模型
@@ -204,28 +210,31 @@ blinnphone
 ### Rim Lighting
 rimlight
 ### Normal Mapping
+法线贴图，通过贴图中的法线信息在较少的面片上渲染出更多凹凸不平的细节
 bumpmapping
-**Listing 13.10: Spherical environment mapping fragment shader**
+### Spherical Environment Maps
 envmapsphere
-**Listing 13.11: Equirectangular environment mapping fragment shader**
+### Equirectangular Environment Maps
 equirectangular
-**Listing 13.16: Fragment shader for cubemap environment rendering**
+### Cubemaps
+天空盒
 cubemapenv
-**Listing 13.17: Fragment shader for per-fragment shininess**
+### Material Properties
 perpixelgloss
-**Listing 13.22: Simplified fragment shader for shadow mapping**
+### Shadow Mapping
 shadowmapping
-**Listing 13.26: The toon fragment shader**
+### Cell Shading: Texels as Light
 toonshading
-**Listing 13.28: Writing to a G-buffer**
+### Generating the G-Buffer
 deferredshading
-**Listing 13.32: Ambient occlusion fragment shader**
+### Ambient Occlusion
+SSAO（Screen Space Ambient Occlusion）增加渲染的真实性
 ssao
-**Listing 13.34: Inner loop of the Julia renderer**
+### Rendering without Triangles
 Julia
-**Listing 13.38: Ray–plane interesection test**
+### Ray Tracing in a Fragment Shader
 raytracer
-**Listing 13.39: Fragment shader for distance field rendering**
+### Distance Field Textures
 sdfdemo
 
 ## Chapter 14
