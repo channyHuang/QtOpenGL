@@ -2,25 +2,32 @@
 第一课：创建一个OpenGL窗口 opengl_window  
 (sb7 Listing 2.1: Our first OpenGL application: simpleclear)  
 第二课：你的第一个多边形 opengl_polygon  
-(sb 7 Listing 2.9: Rendering a single triangle: singletri)
+(sb 7 Listing 2.9: Rendering a single triangle: singletri)  
 第三课：上色 opengl_color  
-(sb 7 Listing 3.12: Deriving a fragment’s color from its position: fragcolorfrompos)
+(sb 7 Listing 3.12: Deriving a fragment’s color from its position: fragcolorfrompos)  
 第四课：旋转 opengl_rotate  
-(sb 7 Listing 5.25: Rendering loop for the spinning cube: spinnycube
+(sb 7 Listing 5.25: Rendering loop for the spinning cube: spinnycube  
 第五课：向三维进军 opengl_3d  
-(sb 7 Listing 5.28: Rendering loop for the spinning cube: indexedcube)
+(sb 7 Listing 5.28: Rendering loop for the spinning cube: indexedcube)  
 第六课：纹理映射 opengl_texture  
 (sb 7 Listing 5.37: Reading from a texture in GLSL: simpletexture)
 
 ## Chapter 2
-**Listing 2.1: Our first OpenGL application**  
+---
+**Listing 2.1: Our first OpenGL application**
 simpleclear  
 **Listing 2.7: Rendering a single point**
 singlepoint  
-**Listing 2.9: Rendering a single triangle**  
-singletri 
+**Listing 2.9: Rendering a single triangle**
+singletri  
+
+---
 
 # Part 2 : OpenGL Super Bible (7 edition)  
+
+**编译环境**：windows 10 x64  
+**Qt version**: 5.14.2
+
 ## Chapter 3  
 ### Tessellation  
 opengl_tessellation  
@@ -29,19 +36,23 @@ Qt中删除了glPolygonMode
 opengl_tessellation-gs  
 (sb7 Listing 3.9: Our first geometry shader: tessellatedgstri) 
 
-# Chapter 3
-**Listing 3.2: Updating a vertex attribute**  
+---
+**Listing 3.2: Updating a vertex attribute**
 movingtri  
 **Listing 3.8: Our first tessellation evaluation shader**
-tessellatedtri
+tessellatedtri  
 **Listing 3.9: Our first geometry shader**
 tessellatedgstri  
 **Listing 3.12: Deriving a fragment’s color from its position**
 fragcolorfrompos  
 **?**
-tessmodes
+tessmodes  
 
-# Chapter 4
+---
+
+## Chapter 4
+
+Math
  
 ## Chapter 5
 ### Loading Textures from Files  
@@ -62,25 +73,28 @@ glVertexAttribI1i为OpenGL 4.2 Compacitility
 Qt中运行异常
 (sb 7 fragmentlist)
 
-wrapmodes
+---
+wrapmodes  
 **Listing 5.25: Rendering loop for the spinning cube**
-spinnycube
+spinnycube  
 **Listing 5.28: Rendering loop for the spinning cube**
 indexedcube  
 **Listing 5.37: Reading from a texture in GLSL**
 simpletexture  
 **Listing 5.39: Loading a .KTX file**
-ktxview
+ktxview  
 **Listing 5.41: Fragment shader with a single texture coordinate**
-simpletexcoords
+simpletexcoords  
 **Mipmaps in Action**
-tunnel
+tunnel  
 **Texture Wrap**
-mirrorclampedge
+mirrorclampedge  
 **Listing 5.45: Rendering loop for the alien rain sample**
-alienrain
+alienrain  
 **Listing 5.48: Traversing a linked list in a fragment shader**
-fragmentlist
+fragmentlist  
+
+---
 
 ## Chapter 6  
 ### Separate Programs
@@ -88,22 +102,29 @@ fragmentlist
 ### Shader Subroutines
 (sb 7 **Listing 6.5: Example subroutine uniform declaration**: subroutines)
 
+---
 **Listing 6.4: Printing interface information**
-programinfo
+programinfo  
 **Listing 6.5: Example subroutine uniform declaration**
-subroutines
+subroutines  
+
+---
 
 ## Chapter 7
+
+---
 **Listing 7.6: Pseudocode for glDrawElementsInstanced()**
-grass
+grass  
 **Listing 7.9: Getting ready for instanced rendering**
-instancedattribs
+instancedattribs  
 **Listing 7.11: Setting up the indirect draw buffer for asteroids**
-multidrawindirect
+multidrawindirect  
 **Listing 7.17: Spring mass system vertex shader**
-sprintmass
+sprintmass  
 **Listing 7.20: Clipping an object against a plane and a sphere**
-clipdistance
+clipdistance  
+
+---
 
 ## Chapter 8
 **Listing 8.1: Simple quad tessellation control shader example**
@@ -173,14 +194,16 @@ compressrgtc
 **Listing 11.14: High-quality texture filtering function**
 hqfilter
 # Chapter 12
-# Chapter 13
-**Listing 13.4: The Phong shading fragment shader**
+
+## Chapter 13
+三种光照模型
+### The Phong Lighting Model
 phonglighting
-**Listing 13.5: Blinn-Phong fragment shader**
+### Blinn-Phong Lighting
 blinnphone
-**Listing 13.6: Rim lighting shader function**
+### Rim Lighting
 rimlight
-**Listing 13.7: Vertex shader for normal mapping**
+### Normal Mapping
 bumpmapping
 **Listing 13.10: Spherical environment mapping fragment shader**
 envmapsphere
@@ -204,3 +227,29 @@ Julia
 raytracer
 **Listing 13.39: Fragment shader for distance field rendering**
 sdfdemo
+
+## Chapter 14
+smoothstep: 生成0到1的平滑过渡值，大概如下：
+```
+float smoothstep(float t1, float t2, float x) {
+  x = clamp((x - t1) / (t2 - t1), 0.0, 1.0); 
+  // Evaluate polynomial
+  return x * x * (3 - 2 * x);
+}
+```
+glBufferStorage需要OpenGL 4.4以上
+
+---
+**Listing 14.1: OpenMP particle updater**
+ompparticles  
+### Packet Buffers
+packetbuffer  
+### Indirect Rendering
+indirectmaterial
+**Listing 14.16: Candidate draws used for culling**
+cullindirect
+### Unmappable Resources
+**Listing 14.20: Julia fractals on the CPU**
+pmbfractal
+
+---
