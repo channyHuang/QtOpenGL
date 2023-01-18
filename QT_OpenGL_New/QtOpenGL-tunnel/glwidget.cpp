@@ -75,6 +75,7 @@ void GlWidget::initializeGL()
     m_vao->bind();
 
     if (f == nullptr) {
+        f = this->context()->functions();
         f = this->context()->versionFunctions<QOpenGLFunctions_4_2_Core>();
         f->initializeOpenGLFunctions();
     }

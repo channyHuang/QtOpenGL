@@ -1,3 +1,5 @@
+QT += opengl
+
 SOURCE_FILES = $$files($${PWD}/*.cpp, false)
 HEADER_FILES = $$files($${PWD}/*.h, false)
 
